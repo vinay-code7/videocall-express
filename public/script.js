@@ -2,6 +2,7 @@ const socket = io("/");
 
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
+const myName = document.createElement("p");
 myVideo.muted = true;
 
 const peers = {};
