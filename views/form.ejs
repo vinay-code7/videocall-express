@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Call</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-dark">
+    <div
+      class="container p-3 d-flex align-items-center justify-content-center"
+      style="height: 100vh"
+    >
+      <div>
+        <form action="/room" method="POST" class="col">
+          <div class="my-3">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Name"
+              required
+              name="name"
+              autocomplete="off"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              id="roomId"
+              placeholder="Room ID"
+              required
+              name="roomId"
+              autocomplete="off"
+            />
+          </div>
+          <div class="my-3 container d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary mb-3">
+              Join Room
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

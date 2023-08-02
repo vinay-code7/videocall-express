@@ -1,8 +1,16 @@
 const socket = io("/");
 
+const myPeer = new Peer();
+
 const videoGrid = document.getElementById("video-grid");
+
+const videoDiv = document.createElement("div");
 const myVideo = document.createElement("video");
 const myName = document.createElement("p");
+
+myName.classList.add("text-light");
+myName.innerHTML = NAME
+
 myVideo.muted = true;
 
 const peers = {};
@@ -36,8 +44,6 @@ socket.on("user-disconnected", (userId) => {
   }
 });
 
-const myPeer = new Peer();
-
 myPeer.on("open", (userId) => {
   console.log(userId);
   socket.emit("join-room", ROOM_ID, userId);
@@ -48,7 +54,9 @@ const addVideoStream = (video, stream) => {
   video.addEventListener("loadedmetadata", () => {
     video.play();
   });
-  videoGrid.append(video);
+  videoDiv.append(video);
+  videoDiv.append(myName);
+  videoGrid.append(videoDiv);
 };
 
 const connectToNewUser = (userId, stream) => {

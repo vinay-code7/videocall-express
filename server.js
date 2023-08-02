@@ -2,17 +2,22 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-const { getRoomId } = require("./custom/customRoomId");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.json()); // Used to parse JSON bodies
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 app.get("/", (req, res) => {
-  res.redirect(`/${getRoomId()}`);
+  res.render("form", { roomId: 123 });
+});
+
+app.post("/room", (req, res) => {
+  res.redirect(`/${req.body.roomId}?name=${req.body.name}`);
 });
 
 app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.params.room });
+  res.render("room", { roomId: req.params.room, name: req.query.name });
 });
 
 io.on("connection", (socket) => {
