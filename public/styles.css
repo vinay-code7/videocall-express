@@ -7,6 +7,7 @@
 
 video {
     width: 20em;
+    height: 20em;
     object-fit: cover;
     margin: 2em 1em;
 }
