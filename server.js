@@ -9,28 +9,28 @@ app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 app.get("/", (req, res) => {
-  res.render("form", { roomId: 123 });
+  res.render("form");
 });
 
 app.post("/room", (req, res) => {
-  res.redirect(`/${req.body.roomId}?name=${req.body.name}`);
+  res.redirect(`/${req.body.roomId}`);
 });
 
 app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.params.room, name: req.query.name });
+  res.render("room", { roomId: req.params.room });
 });
 
-// io.on("connection", (socket) => {
-//   socket.on("join-room", (roomId, name, userId) => {
-//     socket.join(roomId);
-//     console.log(name);
-//     socket.broadcast.to(roomId).emit("user-connected", userId, name);
+io.on("connection", (socket) => {
+  socket.on("join-room", (roomId, userId) => {
+    socket.join(roomId);
 
-//     socket.on("disconnect", () => {
-//       socket.broadcast.to(roomId).emit("user-disconnected", userId);
-//     });
-//   });
-// });
+    socket.broadcast.to(roomId).emit("user-connected", userId);
 
-const PORT = 3000;
+    socket.on("disconnect", () => {
+      socket.broadcast.to(roomId).emit("user-disconnected", userId);
+    });
+  });
+});
+
+const PORT = 5000;
 server.listen(PORT, () => console.log(`Listeing on Port: ${PORT}`));

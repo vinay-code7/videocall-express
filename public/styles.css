@@ -1,22 +1,16 @@
 #video-grid {
-    max-width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 video {
-    max-width: 100%;
-    max-height: 100%;
+    width: 20em;
     object-fit: cover;
+    margin: 2em 1em;
 }
 
 #video-container {
     margin: 2em 1em;
-}
-
-#name-display {
-    color: white;
-    text-align: center;
-    font-size: 1em;
 }
