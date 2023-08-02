@@ -21,7 +21,7 @@ Welcome to the Conference Video Call App! This is a simple web application built
 - EJS: A simple and effective templating language to generate HTML markup with plain JavaScript.
 
 ## Demo
-Yes, I literally setup 4 devices to make the demo and the one with blurry video is actually my broken webcam. 😆
+Yes, I literally gathered 4 devices to make the demo and the one with blurry video is actually my broken webcam. 😆. PS. Message me if you ever want to have conversation with me on this app. 😃
 
 ![demo](https://github.com/vinay-code7/videocall-express/assets/64744987/59ea0f1b-f4fb-4d5d-bb6c-0cd4464b0901)
 
