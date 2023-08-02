@@ -20,16 +20,17 @@ app.get("/:room", (req, res) => {
   res.render("room", { roomId: req.params.room, name: req.query.name });
 });
 
-io.on("connection", (socket) => {
-  socket.on("join-room", (roomId, userId) => {
-    socket.join(roomId);
-    socket.broadcast.to(roomId).emit("user-connected", userId);
+// io.on("connection", (socket) => {
+//   socket.on("join-room", (roomId, name, userId) => {
+//     socket.join(roomId);
+//     console.log(name);
+//     socket.broadcast.to(roomId).emit("user-connected", userId, name);
 
-    socket.on("disconnect", () => {
-      socket.broadcast.to(roomId).emit("user-disconnected", userId);
-    });
-  });
-});
+//     socket.on("disconnect", () => {
+//       socket.broadcast.to(roomId).emit("user-disconnected", userId);
+//     });
+//   });
+// });
 
 const PORT = 3000;
 server.listen(PORT, () => console.log(`Listeing on Port: ${PORT}`));
